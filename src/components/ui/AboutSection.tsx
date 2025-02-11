@@ -4,7 +4,7 @@ import { FadeContainer, FadeDiv, FadeSpan } from "../Fade"
 
 export function AboutSection() {
   return (
-    <section aria-label="about"  id="about">
+    <section aria-label="about" id="about">
       <FadeContainer className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
         <FadeSpan className="block text-center text-sm font-medium tracking-wider text-gray-700 uppercase">

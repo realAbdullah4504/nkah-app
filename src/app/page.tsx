@@ -24,24 +24,24 @@ export default function Home() {
       <div className="px-4 xl:px-0">
         <Features />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <AboutSection />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <EventsSection />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <MembershipSection />
       </div>
       <FeatureDivider className="max-w-6xl" />
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <ProjectSection />
       </div>
       <FeatureDivider className="max-w-6xl" />
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <OurMission />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         {/* <CallToAction /> */}
         <ContactSection />
       </div>
