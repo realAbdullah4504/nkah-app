@@ -63,7 +63,7 @@ export function NavBar() {
           <Link href="/login">
             <Button
               variant="secondary"
-              className="hidden h-10 px-4 font-semibold sm:block"
+              className="hidden h-10 cursor-pointer px-4 font-semibold sm:block"
             >
               Login
             </Button>

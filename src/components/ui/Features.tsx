@@ -35,21 +35,19 @@ type GalleryItem = {
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    src: "/images/volunteer/0D51648D-8AF6-43C4-94A3-CF8400DEDE9D.jpeg",
+    src: "/images/honouring-husbands/5501BAFF-5FF2-4F4A-940E-D5DF6EE68892.jpeg",
     category: "events",
-    title:
-      "Giving back to the community through volunteering. Nkah  members with their children and mothers volunteering at the Feed My Starving Children. -2018 👆🏾👆🏾👆🏾",
+    title: "Nkah Minnesota honoring their husbands - 2019",
   },
   {
     id: 2,
-    src: "/images/volunteer/9F598823-B137-4F14-B606-913BC68C4F4A.jpeg",
+    src: "/images/honouring-husbands/A1DE2CAF-ACF0-41BF-82D0-4C3DBDC721D1.jpeg",
     category: "events",
-    title:
-      "Giving back to the community through volunteering. Nkah  members with their children and mothers volunteering at the Feed My Starving Children. -2018 👆🏾👆🏾👆🏾",
+    title: "Nkah Minnesota honoring their husbands - 2019",
   },
   {
     id: 3,
-    src: "/images/volunteer/EF722B20-F532-4E3A-BFE3-E80A27E35D17.jpeg",
+    src: "/images/volunteer/CCEDF235-81C6-4449-8DF8-F2F3A726212C.jpeg",
     category: "events",
     title:
       "Giving back to the community through volunteering. Nkah  members with their children and mothers volunteering at the Feed My Starving Children. -2018 👆🏾👆🏾👆🏾",
@@ -290,7 +288,7 @@ export default function Features() {
                     className="relative flex cursor-pointer items-center justify-center"
                     onClick={(e) => {
                       e.stopPropagation()
-                      openModal(galleryItems[0])
+                      openModal(galleryItems[1])
                     }}
                   >
                     <RiCommunityLine className="z-10 size-5 text-gray-900" />
@@ -319,7 +317,7 @@ export default function Features() {
                     className="relative flex cursor-pointer items-center justify-center"
                     onClick={(e) => {
                       e.stopPropagation()
-                      openModal(galleryItems[0])
+                      openModal(galleryItems[2])
                     }}
                   >
                     <RiUserHeartLine className="z-10 size-5 text-gray-900" />
@@ -338,7 +336,7 @@ export default function Features() {
                     className="relative flex cursor-pointer items-center justify-center"
                     onClick={(e) => {
                       e.stopPropagation()
-                      openModal(galleryItems[0])
+                      openModal(galleryItems[3])
                     }}
                   >
                     <RiHandHeartLine className="z-10 size-5 text-gray-900" />
@@ -367,7 +365,7 @@ export default function Features() {
                     className="relative flex cursor-pointer items-center justify-center"
                     onClick={(e) => {
                       e.stopPropagation()
-                      openModal(galleryItems[0])
+                      openModal(galleryItems[4])
                     }}
                   >
                     <RiGlobalLine className="z-10 size-5 text-gray-900" />
