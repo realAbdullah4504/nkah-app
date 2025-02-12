@@ -1,6 +1,6 @@
 "use client"
 
-import { BookOpen, Brain, LineChart, Users } from "lucide-react"
+import { BookOpen, Brain, Camera, LineChart, Users } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { FadeContainer, FadeDiv } from "../Fade"
@@ -10,7 +10,7 @@ const ResearchSection = () => {
   const [isEditing, setIsEditing] = useState(false)
 
   // State for research areas
-  const [researchAreas, setResearchAreas] = useState([
+  const researchAreas = [
     {
       title: "Impact Assessment",
       description: "Measuring program effectiveness and community outcomes",
@@ -31,17 +31,20 @@ const ResearchSection = () => {
       description: "Creating learning materials and curricula",
       icon: <BookOpen className="h-6 w-6 text-white" />,
     },
-  ])
+  ]
 
   // State for stats
-  const [stats, setStats] = useState([
+  const stats = [
     { number: "1000+", label: "Women Trained" },
     { number: "24", label: "Research Projects" },
     { number: "12", label: "Training Programs" },
-  ])
+  ]
 
+  interface Images {
+    [key: string]: string
+  }
   // State for images
-  const [images, setImages] = useState({
+  const [images, setImages] = useState<Images>({
     main: "/images/volunteer/9F598823-B137-4F14-B606-913BC68C4F4A.jpeg",
     grid1: "/images/volunteer/E87D995A-4CD2-453F-9199-92BF823B0DF8.jpeg",
     grid2: "/images/volunteer/394028B3-46DE-45BC-891B-D10B537F386E.jpeg",
@@ -62,18 +65,17 @@ const ResearchSection = () => {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24">
-      {/* Edit Mode Toggle */}
-      <div className="absolute right-6 z-10">
-        <button
-          onClick={() => setIsEditing(!isEditing)}
-          className="rounded-md bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
-        >
-          {isEditing ? "Save Changes" : "Edit Page"}
-        </button>
-      </div>
-
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24">
       <FadeContainer className="container mx-auto max-w-7xl px-4">
+        {/* Edit Mode Toggle */}
+        <div className="fixed right-4 z-50">
+          <button
+            onClick={() => setIsEditing(!isEditing)}
+            className="rounded-md bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
+          >
+            {isEditing ? "Save Changes" : "Edit Page"}
+          </button>
+        </div>
         {/* Header Section */}
         <div className="text-center">
           <Customizer
@@ -141,12 +143,17 @@ const ResearchSection = () => {
             {/* Featured Image with Upload */}
             <div className="relative aspect-video overflow-hidden rounded-2xl shadow-2xl">
               {isEditing && (
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, "main")}
-                  className="absolute inset-0 z-20 cursor-pointer opacity-0"
-                />
+                <div className="absolute top-4 right-4 z-20">
+                  <label className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/60 transition-colors hover:bg-black/80">
+                    <Camera className="h-6 w-6 text-white" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, "main")}
+                      className="hidden"
+                    />
+                  </label>
+                </div>
               )}
               <Image
                 src={images.main}
@@ -179,12 +186,17 @@ const ResearchSection = () => {
                   className="relative aspect-square overflow-hidden rounded-2xl shadow-lg"
                 >
                   {isEditing && (
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handleImageUpload(e, key)}
-                      className="absolute inset-0 z-20 cursor-pointer opacity-0"
-                    />
+                    <div className="absolute top-4 right-4 z-20">
+                      <label className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black/60 transition-colors hover:bg-black/80">
+                        <Camera className="h-6 w-6 text-white" />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleImageUpload(e, key)}
+                          className="absolute inset-0 z-20 cursor-pointer opacity-0"
+                        />
+                      </label>
+                    </div>
                   )}
                   <Image
                     src={images[key]}
@@ -194,6 +206,18 @@ const ResearchSection = () => {
                   />
                 </div>
               ))}
+            </div>
+            <div className="rounded-2xl bg-gradient-to-r from-red-50 to-white p-6 shadow-lg">
+              <Customizer
+                isEditing={isEditing}
+                content="Research Excellence"
+                className="text-2xl font-bold text-red-600"
+              />
+              <Customizer
+                isEditing={isEditing}
+                content="Our research projects are designed to drive social change and empower communities"
+                className="mt-2 text-gray-600"
+              />
             </div>
           </FadeDiv>
         </div>

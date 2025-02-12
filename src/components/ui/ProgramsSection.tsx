@@ -9,16 +9,16 @@ const ProgramsSection = () => {
   const [isEditing, setIsEditing] = useState(false)
 
   // State for title, subtitle, and quote
-  const [header, setHeader] = useState({
+  const header = {
     title: "Empowering Communities Through Action",
     subtitle:
       "Our comprehensive programs focus on education, skill development, and community welfare to create lasting positive impact.",
     quote:
       '"Join us in our mission to create positive change. Together, we can build stronger communities and brighter futures for generations to come."',
-  })
+  }
 
   // State for programs
-  const [programs, setPrograms] = useState([
+  const programs = [
     {
       title: "Educational Scholarships",
       description:
@@ -43,15 +43,15 @@ const ProgramsSection = () => {
         "Implementing infrastructure projects and empowerment initiatives at the Nkah Nikwi Center to strengthen community bonds and improve living standards.",
       icon: Building,
     },
-  ])
+  ]
 
   // State for impact statistics
-  const [stats, setStats] = useState([
+  const stats = [
     { value: "1000+", label: "Students Supported" },
     { value: "500+", label: "Women Empowered" },
     { value: "50+", label: "Communities Served" },
     { value: "37+", label: "Years of Service" },
-  ])
+  ]
 
   return (
     <section aria-label="programs" className="py-24" id="programs">
