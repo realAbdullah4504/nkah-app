@@ -1,11 +1,10 @@
 "use client"
 
-import { EditorContent, useEditor } from "@tiptap/react"
-import StarterKit from "@tiptap/starter-kit"
 import { BookOpen, Brain, LineChart, Users } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { FadeContainer, FadeDiv } from "../Fade"
+import Customizer from "./Customizer"
 
 const ResearchSection = () => {
   const [isEditing, setIsEditing] = useState(false)
@@ -65,7 +64,7 @@ const ResearchSection = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24">
       {/* Edit Mode Toggle */}
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute right-6 z-10">
         <button
           onClick={() => setIsEditing(!isEditing)}
           className="rounded-md bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
@@ -77,16 +76,14 @@ const ResearchSection = () => {
       <FadeContainer className="container mx-auto max-w-7xl px-4">
         {/* Header Section */}
         <div className="text-center">
-          <EditableText
+          <Customizer
             isEditing={isEditing}
             content="Research & Training"
-            onSave={(text) => console.log(text)}
             className="inline-block rounded-full bg-red-100 px-4 py-1 text-sm font-medium text-red-600"
           />
-          <EditableText
+          <Customizer
             isEditing={isEditing}
             content="Empowering Through Knowledge"
-            onSave={(text) => console.log(text)}
             className="relative mx-auto mt-4 max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
           />
         </div>
@@ -102,24 +99,14 @@ const ResearchSection = () => {
                 <div className="mb-4 inline-block rounded-lg bg-white/10 p-3">
                   {area.icon}
                 </div>
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={area.title}
-                  onSave={(newText) => {
-                    const updated = [...researchAreas]
-                    updated[index].title = newText
-                    setResearchAreas(updated)
-                  }}
                   className="text-xl font-semibold"
                 />
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={area.description}
-                  onSave={(newText) => {
-                    const updated = [...researchAreas]
-                    updated[index].description = newText
-                    setResearchAreas(updated)
-                  }}
                   className="mt-2 text-sm text-red-100"
                 />
               </div>
@@ -137,24 +124,14 @@ const ResearchSection = () => {
                   key={index}
                   className="rounded-2xl bg-white p-6 text-center ring-1 shadow-lg ring-gray-100"
                 >
-                  <EditableText
+                  <Customizer
                     isEditing={isEditing}
                     content={stat.number}
-                    onSave={(newText) => {
-                      const updated = [...stats]
-                      updated[index].number = newText
-                      setStats(updated)
-                    }}
                     className="text-4xl font-bold text-red-600"
                   />
-                  <EditableText
+                  <Customizer
                     isEditing={isEditing}
                     content={stat.label}
-                    onSave={(newText) => {
-                      const updated = [...stats]
-                      updated[index].label = newText
-                      setStats(updated)
-                    }}
                     className="mt-2 text-sm font-medium text-gray-600"
                   />
                 </div>
@@ -179,16 +156,14 @@ const ResearchSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 p-6 text-white">
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content="Training Excellence"
-                  onSave={(text) => console.log(text)}
                   className="text-2xl font-bold"
                 />
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content="Delivering high-impact training programs for sustainable development"
-                  onSave={(text) => console.log(text)}
                   className="mt-2 max-w-md text-gray-200"
                 />
               </div>
@@ -224,25 +199,6 @@ const ResearchSection = () => {
         </div>
       </FadeContainer>
     </section>
-  )
-}
-
-// EditableText Component
-const EditableText = ({ isEditing, content, onSave, className }) => {
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content,
-    onUpdate: ({ editor }) => {
-      onSave(editor.getHTML())
-    },
-  })
-
-  return isEditing ? (
-    <div className={className}>
-      <EditorContent editor={editor} />
-    </div>
-  ) : (
-    <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
   )
 }
 

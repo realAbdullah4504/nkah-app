@@ -1,9 +1,8 @@
 "use client"
-import { EditorContent, useEditor } from "@tiptap/react"
-import StarterKit from "@tiptap/starter-kit"
 import { BookOpen, Building, Heart, Users } from "lucide-react"
 import { useState } from "react"
 import { FadeContainer, FadeDiv } from "../Fade"
+import Customizer from "./Customizer"
 
 const ProgramsSection = () => {
   // Editable state
@@ -69,16 +68,14 @@ const ProgramsSection = () => {
 
         {/* Header Section */}
         <div className="mt-8 text-center">
-          <EditableText
+          <Customizer
             isEditing={isEditing}
             content={header.title}
-            onSave={(newText) => setHeader({ ...header, title: newText })}
             className="text-4xl font-semibold tracking-tighter text-gray-900 sm:text-5xl sm:leading-[3.5rem]"
           />
-          <EditableText
+          <Customizer
             isEditing={isEditing}
             content={header.subtitle}
-            onSave={(newText) => setHeader({ ...header, subtitle: newText })}
             className="mx-auto mt-4 max-w-2xl text-gray-600"
           />
         </div>
@@ -94,24 +91,14 @@ const ProgramsSection = () => {
                 <div className="mb-4 rounded-full bg-red-50 p-4">
                   <program.icon className="h-6 w-6 text-red-600" />
                 </div>
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={program.title}
-                  onSave={(newText) => {
-                    const updatedPrograms = [...programs]
-                    updatedPrograms[index].title = newText
-                    setPrograms(updatedPrograms)
-                  }}
                   className="mb-3 text-xl font-semibold text-gray-900"
                 />
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={program.description}
-                  onSave={(newText) => {
-                    const updatedPrograms = [...programs]
-                    updatedPrograms[index].description = newText
-                    setPrograms(updatedPrograms)
-                  }}
                   className="leading-relaxed text-gray-600"
                 />
               </div>
@@ -127,24 +114,14 @@ const ProgramsSection = () => {
                 key={index}
                 className="rounded-lg bg-red-50 p-6 text-center transition-transform hover:scale-105 hover:shadow-lg"
               >
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={stat.value}
-                  onSave={(newText) => {
-                    const updatedStats = [...stats]
-                    updatedStats[index].value = newText
-                    setStats(updatedStats)
-                  }}
                   className="text-3xl font-bold text-red-600"
                 />
-                <EditableText
+                <Customizer
                   isEditing={isEditing}
                   content={stat.label}
-                  onSave={(newText) => {
-                    const updatedStats = [...stats]
-                    updatedStats[index].label = newText
-                    setStats(updatedStats)
-                  }}
                   className="mt-1 text-sm text-gray-600"
                 />
               </div>
@@ -155,37 +132,15 @@ const ProgramsSection = () => {
         {/* Quote Section */}
         <FadeDiv className="mt-16 text-center">
           <blockquote className="mx-auto max-w-3xl rounded-2xl border-l-4 border-red-600 bg-gradient-to-r from-red-50 to-white p-8 shadow-sm">
-            <EditableText
+            <Customizer
               isEditing={isEditing}
               content={header.quote}
-              onSave={(newText) => setHeader({ ...header, quote: newText })}
               className="text-lg leading-relaxed text-gray-700 italic"
             />
           </blockquote>
         </FadeDiv>
       </FadeContainer>
     </section>
-  )
-}
-
-// EditableText Component using TipTap
-const EditableText = ({ isEditing, content, onSave, className }) => {
-  const [text, setText] = useState(content)
-
-  const editor = useEditor({
-    extensions: [StarterKit],
-    content: text,
-    onUpdate: ({ editor }) => {
-      setText(editor.getHTML())
-    },
-  })
-
-  return isEditing ? (
-    <div className={className}>
-      <EditorContent editor={editor} />
-    </div>
-  ) : (
-    <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
   )
 }
 
