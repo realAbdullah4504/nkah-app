@@ -4,6 +4,7 @@ import "./globals.css"
 
 import Footer from "@/components/ui/Footer"
 import { NavBar } from "@/components/ui/Navbar"
+import QueryProvider from "@/providers/QueryProvider"
 import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
@@ -47,9 +48,11 @@ export default function RootLayout({
       <body
         className={`${GeistSans.className} min-h-screen overflow-x-hidden scroll-auto bg-gray-50 antialiased selection:bg-orange-100 selection:text-orange-600`}
       >
-        <NavBar />
-        {children}
-        <Footer />
+        <QueryProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   )

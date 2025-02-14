@@ -1,5 +1,5 @@
 "use client"
-
+import { useResearch } from "@/hooks/queries/useResearch"
 import { BookOpen, Brain, Camera, LineChart, Users } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
@@ -8,6 +8,9 @@ import Customizer from "./Customizer"
 
 const ResearchSection = () => {
   const [isEditing, setIsEditing] = useState(false)
+
+  const { data: researchData, isLoading, error } = useResearch()
+  console.log("data ", researchData, isLoading, error)
 
   // State for research areas
   const researchAreas = [
@@ -80,12 +83,12 @@ const ResearchSection = () => {
         <div className="text-center">
           <Customizer
             isEditing={isEditing}
-            content="Research & Training"
+            content={researchData?.heading}
             className="inline-block rounded-full bg-red-100 px-4 py-1 text-sm font-medium text-red-600"
           />
           <Customizer
             isEditing={isEditing}
-            content="Empowering Through Knowledge"
+            content={researchData?.title}
             className="relative mx-auto mt-4 max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
           />
         </div>
