@@ -1,4 +1,3 @@
-"use client"
 import { EditorContent, useEditor } from "@tiptap/react"
 import StarterKit from "@tiptap/starter-kit"
 import { useState } from "react"
@@ -18,6 +17,7 @@ const Customizer = ({ isEditing, content, className }: CustomizerProps) => {
     onUpdate: ({ editor }) => {
       setText(editor.getHTML())
     },
+    immediatelyRender: false,
   })
 
   return isEditing ? (

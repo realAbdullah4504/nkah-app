@@ -1,74 +1,40 @@
 "use client"
-import { useResearch } from "@/hooks/queries/useResearch"
-import { BookOpen, Brain, Camera, LineChart, Users } from "lucide-react"
+import { defaultResearchData } from "@/constants/research"
+import { useResearch, useUpdateResearch } from "@/hooks/queries/useResearch"
+import { ImageKey } from "@/types/research"
+import { Camera } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import DynamicIcon from "../DynamicIcon"
 import { FadeContainer, FadeDiv } from "../Fade"
 import Customizer from "./Customizer"
 
 const ResearchSection = () => {
   const [isEditing, setIsEditing] = useState(false)
 
-  const { data: researchData, isLoading, error } = useResearch()
-  console.log("data ", researchData, isLoading, error)
-
-  // State for research areas
-  const researchAreas = [
-    {
-      title: "Impact Assessment",
-      description: "Measuring program effectiveness and community outcomes",
-      icon: <LineChart className="h-6 w-6 text-white" />,
-    },
-    {
-      title: "Community Studies",
-      description: "Understanding local needs and challenges",
-      icon: <Users className="h-6 w-6 text-white" />,
-    },
-    {
-      title: "Skills Development",
-      description: "Training programs for economic empowerment",
-      icon: <Brain className="h-6 w-6 text-white" />,
-    },
-    {
-      title: "Educational Resources",
-      description: "Creating learning materials and curricula",
-      icon: <BookOpen className="h-6 w-6 text-white" />,
-    },
-  ]
-
-  // State for stats
-  const stats = [
-    { number: "1000+", label: "Women Trained" },
-    { number: "24", label: "Research Projects" },
-    { number: "12", label: "Training Programs" },
-  ]
-
-  interface Images {
-    [key: string]: string
-  }
-  // State for images
-  const [images, setImages] = useState<Images>({
-    main: "/images/volunteer/9F598823-B137-4F14-B606-913BC68C4F4A.jpeg",
-    grid1: "/images/volunteer/E87D995A-4CD2-453F-9199-92BF823B0DF8.jpeg",
-    grid2: "/images/volunteer/394028B3-46DE-45BC-891B-D10B537F386E.jpeg",
-  })
+  const { data: researchData } = useResearch()
+  const { mutate: updateResearch } = useUpdateResearch()
+  // console.log("data ", researchData, isLoading, error)
 
   // Image upload handler
-  const handleImageUpload = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-    imageKey: string,
-  ) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      // Here you would typically upload to your storage service
-      // For now, we'll use a placeholder URL
-      const imageUrl = URL.createObjectURL(file)
-      setImages((prev) => ({ ...prev, [imageKey]: imageUrl }))
-    }
-  }
+  // const handleImageUpload = async (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   imageKey: string,
+  // ) => {
+  //   const file = e.target.files?.[0]
+  //   if (file) {
+  //     // Here you would typically upload to your storage service
+  //     // For now, we'll use a placeholder URL
+  //     const imageUrl = URL.createObjectURL(file)
+  //     setImages((prev) => ({ ...prev, [imageKey]: imageUrl }))
+  //   }
+  // }
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24">
+      <button onClick={() => updateResearch(defaultResearchData)}>
+        Update
+      </button>
       <FadeContainer className="container mx-auto max-w-7xl px-4">
         {/* Edit Mode Toggle */}
         <div className="fixed right-4 z-50">
@@ -83,26 +49,29 @@ const ResearchSection = () => {
         <div className="text-center">
           <Customizer
             isEditing={isEditing}
-            content={researchData?.heading}
+            content={researchData?.heading ?? ""}
             className="inline-block rounded-full bg-red-100 px-4 py-1 text-sm font-medium text-red-600"
           />
           <Customizer
             isEditing={isEditing}
-            content={researchData?.title}
+            content={researchData?.title ?? ""}
             className="relative mx-auto mt-4 max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
           />
         </div>
 
         {/* Research Areas */}
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {researchAreas.map((area, index) => (
+          {researchData?.researchAreas.map((area, index) => (
             <FadeDiv
               key={index}
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-6 text-white shadow-lg"
             >
               <div className="relative z-10">
                 <div className="mb-4 inline-block rounded-lg bg-white/10 p-3">
-                  {area.icon}
+                  <DynamicIcon
+                    name={area.iconName}
+                    className="h-10 w-10 text-white"
+                  />
                 </div>
                 <Customizer
                   isEditing={isEditing}
@@ -124,7 +93,7 @@ const ResearchSection = () => {
           {/* Stats Section */}
           <FadeDiv className="space-y-8">
             <div className="grid grid-cols-3 gap-6">
-              {stats.map((stat, index) => (
+              {researchData?.stats.map((stat, index) => (
                 <div
                   key={index}
                   className="rounded-2xl bg-white p-6 text-center ring-1 shadow-lg ring-gray-100"
@@ -152,28 +121,30 @@ const ResearchSection = () => {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={(e) => handleImageUpload(e, "main")}
+                      // onChange={(e) => handleImageUpload(e, "main")}
                       className="hidden"
                     />
                   </label>
                 </div>
               )}
-              <Image
-                src={images.main}
-                alt="Training session in progress"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-110"
-              />
+              {researchData?.images?.main && (
+                <Image
+                  src={researchData?.images.main}
+                  alt="Featured Research Image"
+                  fill
+                  className="object-cover transition-all duration-500 hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 p-6 text-white">
                 <Customizer
                   isEditing={isEditing}
-                  content="Training Excellence"
+                  content={researchData?.featuredTitle ?? ""}
                   className="text-2xl font-bold"
                 />
                 <Customizer
                   isEditing={isEditing}
-                  content="Delivering high-impact training programs for sustainable development"
+                  content={researchData?.featuredDescription ?? ""}
                   className="mt-2 max-w-md text-gray-200"
                 />
               </div>
@@ -183,7 +154,7 @@ const ResearchSection = () => {
           {/* Image Grid with Upload */}
           <FadeDiv className="grid gap-6">
             <div className="grid grid-cols-2 gap-6">
-              {["grid1", "grid2"].map((key, index) => (
+              {(["grid1", "grid2"] as ImageKey[]).map((key, index) => (
                 <div
                   key={key}
                   className="relative aspect-square overflow-hidden rounded-2xl shadow-lg"
@@ -195,30 +166,32 @@ const ResearchSection = () => {
                         <input
                           type="file"
                           accept="image/*"
-                          onChange={(e) => handleImageUpload(e, key)}
+                          // onChange={(e) => handleImageUpload(e, key)}
                           className="absolute inset-0 z-20 cursor-pointer opacity-0"
                         />
                       </label>
                     </div>
                   )}
-                  <Image
-                    src={images[key]}
-                    alt={`Research image ${index + 1}`}
-                    fill
-                    className="object-cover transition-all duration-500 hover:scale-105"
-                  />
+                  {researchData?.images[key] ? (
+                    <Image
+                      src={researchData?.images[key]}
+                      alt={`Research image ${index + 1}`}
+                      fill
+                      className="object-cover transition-all duration-500 hover:scale-105"
+                    />
+                  ) : null}
                 </div>
               ))}
             </div>
             <div className="rounded-2xl bg-gradient-to-r from-red-50 to-white p-6 shadow-lg">
               <Customizer
                 isEditing={isEditing}
-                content="Research Excellence"
+                content={researchData?.researchTitle ?? ""}
                 className="text-2xl font-bold text-red-600"
               />
               <Customizer
                 isEditing={isEditing}
-                content="Our research projects are designed to drive social change and empower communities"
+                content={researchData?.researchDescription ?? ""}
                 className="mt-2 text-gray-600"
               />
             </div>
