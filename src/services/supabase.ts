@@ -27,7 +27,10 @@ export const updateQueryData = async (
 ) => {
   const { data, error } = await supabase
     .from(table)
-    .upsert({ section_key: key, content: JSON.stringify(content) })
+    .upsert(
+      { section_key: key, content: JSON.stringify(content) },
+      { onConflict: "section_key" },
+    )
     .select()
     .single()
 

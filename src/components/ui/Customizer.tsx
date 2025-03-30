@@ -6,17 +6,27 @@ type CustomizerProps = {
   isEditing: boolean
   content: string
   className: string
+  fieldKey: string
+  onUpdate: (fieldKey: string, value: string) => void
 }
-
-const Customizer = ({ isEditing, content, className }: CustomizerProps) => {
+const Customizer = ({
+  isEditing,
+  content,
+  className,
+  fieldKey,
+  onUpdate,
+}: CustomizerProps) => {
   const [text, setText] = useState(content)
 
   const editor = useEditor({
     extensions: [StarterKit],
     content: text,
     onUpdate: ({ editor }) => {
-      setText(editor.getHTML())
+      const newContent = editor.getHTML()
+      setText(newContent)
+      onUpdate(fieldKey, newContent)
     },
+
     immediatelyRender: false,
   })
 
@@ -25,7 +35,7 @@ const Customizer = ({ isEditing, content, className }: CustomizerProps) => {
       <EditorContent editor={editor} />
     </div>
   ) : (
-    <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
+    <div className={className} dangerouslySetInnerHTML={{ __html: text }} />
   )
 }
 

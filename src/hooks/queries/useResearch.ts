@@ -1,10 +1,11 @@
 import { defaultResearchData } from "@/constants/research"
-import { queryClient } from "@/lib/queryClient"
+import { getQueryClient } from "@/lib/queryClient"
 import { getQueryData, updateQueryData } from "@/services/supabase"
 import { ResearchData } from "@/types/research"
 import { useMutation, useQuery } from "@tanstack/react-query"
 
 const RESEARCH_QUERY_KEY = "researchSection" as const
+const queryClient = getQueryClient()
 export function useResearch() {
   const getResearch = useQuery({
     queryKey: [RESEARCH_QUERY_KEY],
@@ -25,8 +26,8 @@ export function useUpdateResearch() {
   const updateResearch = useMutation({
     mutationKey: [RESEARCH_QUERY_KEY],
     mutationFn: async (content: ResearchData) => {
-      const data = await updateQueryData("nkah_sections", "research", content)
-      console.log(data)
+      await updateQueryData("nkah_sections", "research", content)
+      // console.log(data)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: RESEARCH_QUERY_KEY })

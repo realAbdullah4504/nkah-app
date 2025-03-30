@@ -1,5 +1,4 @@
 "use client"
-import { defaultResearchData } from "@/constants/research"
 import { useResearch, useUpdateResearch } from "@/hooks/queries/useResearch"
 import { ImageKey } from "@/types/research"
 import { Camera } from "lucide-react"
@@ -10,10 +9,24 @@ import { FadeContainer, FadeDiv } from "../Fade"
 import Customizer from "./Customizer"
 
 const ResearchSection = () => {
-  const [isEditing, setIsEditing] = useState(false)
-
   const { data: researchData } = useResearch()
   const { mutate: updateResearch } = useUpdateResearch()
+  const [isEditing, setIsEditing] = useState(false)
+
+  const onUpdate = (fieldKey: string, value: string) => {
+    console.log("fieldKey ", fieldKey, value)
+    const fields = fieldKey.split(".")
+    for (let i = 0; i < fields.length; i++) {
+      const key = keys[i]
+    }
+
+    // console.log("newResearchData ", newResearchData)
+    // updateResearch(newResearchData as ResearchData)
+  }
+
+  const onSave = () => {
+    setIsEditing(!isEditing)
+  }
   // console.log("data ", researchData, isLoading, error)
 
   // Image upload handler
@@ -32,14 +45,11 @@ const ResearchSection = () => {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-gray-50 to-white py-24">
-      <button onClick={() => updateResearch(defaultResearchData)}>
-        Update
-      </button>
       <FadeContainer className="container mx-auto max-w-7xl px-4">
         {/* Edit Mode Toggle */}
         <div className="fixed right-4 z-50">
           <button
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={onSave}
             className="rounded-md bg-blue-500 px-4 py-2 text-white transition hover:bg-blue-600"
           >
             {isEditing ? "Save Changes" : "Edit Page"}
@@ -51,17 +61,21 @@ const ResearchSection = () => {
             isEditing={isEditing}
             content={researchData?.heading ?? ""}
             className="inline-block rounded-full bg-red-100 px-4 py-1 text-sm font-medium text-red-600"
+            onUpdate={onUpdate}
+            fieldKey="heading"
           />
           <Customizer
             isEditing={isEditing}
             content={researchData?.title ?? ""}
             className="relative mx-auto mt-4 max-w-2xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+            onUpdate={onUpdate}
+            fieldKey="title"
           />
         </div>
 
         {/* Research Areas */}
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {researchData?.researchAreas.map((area, index) => (
+          {researchData?.researchAreas?.map((area, index) => (
             <FadeDiv
               key={index}
               className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 to-red-700 p-6 text-white shadow-lg"
@@ -77,11 +91,15 @@ const ResearchSection = () => {
                   isEditing={isEditing}
                   content={area.title}
                   className="text-xl font-semibold"
+                  onUpdate={onUpdate}
+                  fieldKey={`researchAreas.${index}.title`}
                 />
                 <Customizer
                   isEditing={isEditing}
                   content={area.description}
                   className="mt-2 text-sm text-red-100"
+                  onUpdate={onUpdate}
+                  fieldKey={`researchAreas.${index}.description`}
                 />
               </div>
             </FadeDiv>
@@ -93,7 +111,7 @@ const ResearchSection = () => {
           {/* Stats Section */}
           <FadeDiv className="space-y-8">
             <div className="grid grid-cols-3 gap-6">
-              {researchData?.stats.map((stat, index) => (
+              {researchData?.stats?.map((stat, index) => (
                 <div
                   key={index}
                   className="rounded-2xl bg-white p-6 text-center ring-1 shadow-lg ring-gray-100"
@@ -102,11 +120,15 @@ const ResearchSection = () => {
                     isEditing={isEditing}
                     content={stat.number}
                     className="text-4xl font-bold text-red-600"
+                    onUpdate={onUpdate}
+                    fieldKey={`stats.${index}.number`}
                   />
                   <Customizer
                     isEditing={isEditing}
                     content={stat.label}
                     className="mt-2 text-sm font-medium text-gray-600"
+                    onUpdate={onUpdate}
+                    fieldKey={`stats.${index}.label`}
                   />
                 </div>
               ))}
@@ -141,11 +163,15 @@ const ResearchSection = () => {
                   isEditing={isEditing}
                   content={researchData?.featuredTitle ?? ""}
                   className="text-2xl font-bold"
+                  onUpdate={onUpdate}
+                  fieldKey="featuredTitle"
                 />
                 <Customizer
                   isEditing={isEditing}
                   content={researchData?.featuredDescription ?? ""}
                   className="mt-2 max-w-md text-gray-200"
+                  onUpdate={onUpdate}
+                  fieldKey="featuredDescription"
                 />
               </div>
             </div>
@@ -172,7 +198,7 @@ const ResearchSection = () => {
                       </label>
                     </div>
                   )}
-                  {researchData?.images[key] ? (
+                  {researchData?.images?.[key] ? (
                     <Image
                       src={researchData?.images[key]}
                       alt={`Research image ${index + 1}`}
@@ -188,11 +214,15 @@ const ResearchSection = () => {
                 isEditing={isEditing}
                 content={researchData?.researchTitle ?? ""}
                 className="text-2xl font-bold text-red-600"
+                onUpdate={onUpdate}
+                fieldKey="researchTitle"
               />
               <Customizer
                 isEditing={isEditing}
                 content={researchData?.researchDescription ?? ""}
                 className="mt-2 text-gray-600"
+                onUpdate={onUpdate}
+                fieldKey="researchDescription"
               />
             </div>
           </FadeDiv>

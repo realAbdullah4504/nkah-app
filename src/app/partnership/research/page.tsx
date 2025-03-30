@@ -1,11 +1,8 @@
 import ResearchSection from "@/components/ui/ResearchSection"
 import { defaultResearchData } from "@/constants/research"
+import { getQueryClient } from "@/lib/queryClient"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query"
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { cookies } from "next/headers"
 
 async function getServerData() {
@@ -23,17 +20,12 @@ async function getServerData() {
   const section = data[0]
   const parsedContent = JSON.parse(section.content)
 
-  return {
-    ...section,
-    heading: parsedContent.heading,
-    title: parsedContent.title,
-  }
+  return parsedContent
 }
 
 export default async function ResearchPage() {
-  const queryClient = new QueryClient()
+  const queryClient = getQueryClient()
 
-  // Prefetch query before rendering the page
   await queryClient.prefetchQuery({
     queryKey: ["researchSection"],
     queryFn: getServerData,
