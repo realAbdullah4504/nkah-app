@@ -36,7 +36,7 @@ export function NavBar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden sm:block">
+          <nav className="hidden lg:block">
             <div className="flex items-center gap-10 font-medium">
               <Link className="px-2 py-1 text-gray-900" href="/">
                 Home
@@ -60,7 +60,7 @@ export function NavBar() {
           <Link href="/login">
             <Button
               variant="secondary"
-              className="hidden h-10 cursor-pointer px-4 font-semibold sm:block"
+              className="hidden h-10 cursor-pointer px-4 font-semibold lg:block"
             >
               Login
             </Button>
@@ -70,7 +70,7 @@ export function NavBar() {
           <Button
             onClick={() => setOpen(!open)}
             variant="secondary"
-            className="cursor-pointer p-1.5 sm:hidden"
+            className="cursor-pointer p-1.5 lg:hidden"
             aria-label={open ? "Close Navigation Menu" : "Open Navigation Menu"}
           >
             {!open ? (
@@ -90,7 +90,7 @@ export function NavBar() {
         {/* Mobile Navigation */}
         <nav
           className={cx(
-            "mt-6 flex flex-col gap-6 text-lg ease-in-out will-change-transform sm:hidden",
+            "mt-6 flex flex-col gap-6 text-lg ease-in-out will-change-transform lg:hidden",
             open ? "" : "hidden",
           )}
         >
