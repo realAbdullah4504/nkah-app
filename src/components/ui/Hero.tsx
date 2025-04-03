@@ -31,20 +31,27 @@ export function Hero() {
 
         {/* Main Title */}
         <h1 className="mt-8 text-center text-4xl font-semibold tracking-tighter text-gray-900 sm:text-8xl sm:leading-[5.5rem]">
-          <FadeSpan>Nkah Ni</FadeSpan> <FadeSpan>Nkwi</FadeSpan>
+          <FadeSpan>Civil Engineering</FadeSpan> <FadeSpan>of</FadeSpan>
           <br />
-          <FadeSpan>Ni</FadeSpan> <FadeSpan>Mankon</FadeSpan>
+          <FadeSpan>G.T.H.S Alabukam</FadeSpan>{" "}
+          <FadeSpan>(CENEXS.GTHS.ALA)</FadeSpan>
         </h1>
 
         {/* Subtext */}
         <p className="mt-5 max-w-4xl text-center text-base text-balance text-gray-700 sm:mt-8 sm:text-lg">
           <FadeSpan>
-            Join us to foster love, unity, self-reliance, and development
+            We, the Civil Engineering Ex-Students of G.T.H.S Alabukam, united by
+            our sheared experiences and passion for the field of civil
+            engineering, do hereby establish this association to promote
+            camaraderie (feeling of friendship, mutual trust, and shared
+            experience, support one another both personally and professionally),
+            professional development and community service among our members,
+            while upholding the values of excellence, integrity, and teamwork.
           </FadeSpan>{" "}
-          <FadeSpan>
+          {/* <FadeSpan>
             in underprivileged communities through scholarships, trainings, and
           </FadeSpan>{" "}
-          <FadeSpan>donations that change lives.</FadeSpan>
+          <FadeSpan>donations that change lives.</FadeSpan> */}
         </p>
 
         {/* Call to Action */}

@@ -26,32 +26,29 @@ export function NavBar() {
         <div className="relative flex items-center justify-between">
           {/* Logo - Ignore the actual logo image replacement as per instruction */}
           <Link href={siteConfig.baseLinks.home} aria-label="Home">
-            <span className="sr-only">Nkah Ni Nkwi Ni Mankon Logo</span>
+            <span className="sr-only">Civil Engineering Ex-Students Logo</span>
             <Image
-              src="/logo-clean.png"
-              alt="Nkah Ni Nkwi Ni Mankon Logo"
-              height={150}
-              width={100}
+              src="/logo.png"
+              alt="Civil Engineering Ex-Students-Logo"
+              height={100}
+              width={60}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
+          <nav className="hidden sm:block">
             <div className="flex items-center gap-10 font-medium">
               <Link className="px-2 py-1 text-gray-900" href="/">
                 Home
               </Link>
               <Link className="px-2 py-1 text-gray-900" href="/about">
-                About
+                Values
               </Link>
               <Link className="px-2 py-1 text-gray-900" href="/events">
-                Events
+                Events & Governance
               </Link>
               <Link className="px-2 py-1 text-gray-900" href="/membership">
-                Membership
-              </Link>
-              <Link className="px-2 py-1 text-gray-900" href="/projects">
-                Projects
+                Membership & Organizational Structure
               </Link>
               <Link className="px-2 py-1 text-gray-900" href="/contact">
                 Contact
@@ -102,16 +99,15 @@ export function NavBar() {
               <Link href="/">Home</Link>
             </li>
             <li onClick={() => setOpen(false)}>
-              <Link href="/about">About Us</Link>
+              <Link href="/about">Values</Link>
             </li>
             <li onClick={() => setOpen(false)}>
-              <Link href="/events">Events</Link>
+              <Link href="/events">Events & Governance</Link>
             </li>
             <li onClick={() => setOpen(false)}>
-              <Link href="/membership">Membership</Link>
-            </li>
-            <li onClick={() => setOpen(false)}>
-              <Link href="/projects">Projects</Link>
+              <Link href="/membership">
+                Membership & Organizational Structure
+              </Link>
             </li>
             <li onClick={() => setOpen(false)}>
               <Link href="/contact">Contact Us</Link>

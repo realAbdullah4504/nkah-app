@@ -1,4 +1,4 @@
-import { Calendar, Gift, UserCheck } from "lucide-react"
+import { Calendar, CreditCard, Network, UserCheck } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { FadeContainer, FadeDiv, FadeSpan } from "../Fade"
@@ -18,12 +18,12 @@ export function MembershipSection() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-4xl font-semibold tracking-tighter text-gray-900 sm:text-5xl sm:leading-[3.5rem]">
-                  Eligibility and Benefits
+                  Join Our Community
                 </h2>
                 <p className="mt-4 text-lg text-balance text-gray-700">
-                  Becoming a member of Nkah Ni Nkwi Ni Mankon means joining a
-                  vibrant community dedicated to empowering women, fostering
-                  unity, and preserving the cultural heritage of Mankon.
+                  Be part of a supportive network of professionals and friends
+                  dedicated to growth, collaboration, and excellence in civil
+                  engineering.
                 </p>
               </div>
 
@@ -35,46 +35,63 @@ export function MembershipSection() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">
-                      Membership Eligibility
+                      Eligibility
                     </h3>
                     <p className="mt-2 text-gray-700">
-                      Membership is open to individuals aged 18 and above,
-                      including Mankon natives, their families, and friends who
-                      share our values of love, unity, and self-reliance.
+                      Open to all civil engineering ex-students of GTHS Alabukam
+                      (local and abroad). Associate membership available for
+                      those connected to the civil engineering field.
                     </p>
                   </div>
                 </div>
 
-                {/* Membership Benefits */}
+                {/* Membership Fees */}
                 <div className="flex gap-4">
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-red-50">
-                    <Gift className="size-6 text-red-600" />
+                    <CreditCard className="size-6 text-red-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">
-                      Membership Benefits
+                      Membership Fees
                     </h3>
                     <p className="mt-2 text-gray-700">
-                      Enjoy access to educational programs, social support,
-                      cultural events, vocational training, and opportunities
-                      for collective self-reliance and development.
+                      Registration Fee: 2000 FCFA (non-refundable)
+                      <br />
+                      Annual Subscription: 10,000 FCFA
                     </p>
                   </div>
                 </div>
 
-                {/* Programs and Activities */}
+                {/* Benefits */}
+                <div className="flex gap-4">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-red-50">
+                    <Network className="size-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Member Benefits
+                    </h3>
+                    <p className="mt-2 text-gray-700">
+                      Exclusive networking events, access to job opportunities,
+                      industry news, professional development resources, and
+                      participation in social and community service activities.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Renewal Information */}
                 <div className="flex gap-4">
                   <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-red-50">
                     <Calendar className="size-6 text-red-600" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">
-                      Programs and Activities
+                      Membership Renewal
                     </h3>
                     <p className="mt-2 text-gray-700">
-                      Participate in cultural celebrations, training workshops,
-                      community events, and initiatives like scholarships and
-                      empowerment programs.
+                      Membership is maintained through timely dues. Lost
+                      membership may be reinstated via a formal application
+                      process.
                     </p>
                   </div>
                 </div>
@@ -82,20 +99,19 @@ export function MembershipSection() {
 
               <div>
                 <Link
-                  href="/login"
+                  href="/join"
                   className="inline-flex cursor-pointer items-center justify-center rounded-md border-b-[1.5px] border-red-600 bg-gradient-to-b from-red-600 to-red-700 px-5 py-3 font-medium tracking-wide text-white shadow-[0_0_0_2px_rgba(0,0,0,0.04),0_0_14px_0_rgba(255,255,255,0.19)] transition-all duration-200 ease-in-out hover:shadow-red-300"
                 >
-                  Register Now
+                  Become a Member
                 </Link>
               </div>
             </div>
           </FadeDiv>
 
-          {/* Images */}
           <FadeDiv className="relative lg:pl-8">
             <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
               <Image
-                src="/membership-cropped.jpg"
+                src="/membership.jpg"
                 alt="Nkah Ni Nkwi Ni Mankon community members engaging in empowerment activities"
                 fill
                 className="rounded-2xl object-cover"

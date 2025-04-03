@@ -24,7 +24,8 @@ export function OurMission() {
           <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-red-600" />
         </h2>
         <p className="mt-2 max-w-lg text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
-          Upholding Love, Unity, and Development
+          Building strong communities through networking, mentorship, and
+          innovation for positive social impact.
         </p>
       </div>
 
@@ -37,35 +38,27 @@ export function OurMission() {
       <Divider className="mt-0" />
 
       {/* Mission Points (StickerCards) */}
-      {/* Changed to align with NKAH NI NKWI NI MANKON's 5 mission statements */}
       <div className="grid grid-cols-1 grid-rows-3 gap-6 md:grid-cols-4 md:grid-rows-1">
         <StickerCard
-          // Keeping the same icon prop, but you could swap to something else if desired
           Icon={RiNavigationFill}
-          title="Promote Self-Reliance"
-          description="Encouraging the personal and collective development of Mankon women and children."
+          title="Networking"
+          description="Building strong connections within the community through regular meetings, events, and shared experiences."
         />
         <StickerCard
           Icon={RiRobot3Fill}
-          title="Build Mutual Trust & Unity"
-          description="Strengthening understanding and unity among members to foster a supportive environment."
+          title="Mentorship"
+          description="Facilitating knowledge transfer between experienced members and newcomers to foster personal and professional growth."
         />
         <StickerCard
           Icon={RiDropFill}
-          title="Foster Culture & Learning"
-          description="Providing a medium for Mankon women and children to learn and preserve the Mankon heritage."
+          title="Continuous Learning"
+          description="Creating opportunities for skill development, education, and professional advancement within our community."
         />
         <StickerCard
           Icon={RiPieChartFill}
-          title="Spirit of Service & Solidarity"
-          description="Encouraging unity and solidarity among members for the well-being of the entire Mankon community."
+          title="Innovation & Service"
+          description="Promoting collaborative initiatives and community service projects that drive positive change and innovation."
         />
-        {/* <StickerCard
-          // Added fifth card to capture the final mission point
-          Icon={RiDropFill} // Duplicate icon—feel free to replace with another
-          title="Strengthen Collective Development"
-          description="Promoting and reinforcing communal self-reliance and growth for women and children worldwide."
-        /> */}
       </div>
     </section>
   )

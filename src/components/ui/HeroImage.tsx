@@ -7,7 +7,7 @@ export default function HeroImage() {
         {/* Constrain container width, then maintain 16/9 ratio */}
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl shadow-md md:h-[70vh]">
           <Image
-            src="/main.jpg"
+            src="/hero-image.jpg"
             alt="Hero image"
             fill
             className="rounded-xl object-cover"

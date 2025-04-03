@@ -3,11 +3,12 @@ import { ContactSection } from "@/components/ui/Contact"
 import { EventsSection } from "@/components/ui/Events"
 import FeatureDivider from "@/components/ui/FeatureDivider"
 import Features from "@/components/ui/Features"
+import { GovernanceSection } from "@/components/ui/GovernanceSection"
 import { Hero } from "@/components/ui/Hero"
 import HeroImage from "@/components/ui/HeroImage"
 import { MembershipSection } from "@/components/ui/Membership"
+import { OrganizationSection } from "@/components/ui/OrganizationSection"
 import { OurMission } from "@/components/ui/OurMission"
-import { ProjectSection } from "@/components/ui/Project"
 
 export default function Home() {
   return (
@@ -24,24 +25,27 @@ export default function Home() {
       <div className="px-4 xl:px-0">
         <Features />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <AboutSection />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <EventsSection />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <MembershipSection />
       </div>
       <FeatureDivider className="max-w-6xl" />
-      <div className="py-8 px-4 xl:px-0">
-        <ProjectSection />
+      <div className="px-4 py-8 xl:px-0">
+        <OrganizationSection />
+      </div>
+      <div className="px-4 py-8 xl:px-0">
+        <GovernanceSection />
       </div>
       <FeatureDivider className="max-w-6xl" />
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         <OurMission />
       </div>
-      <div className="py-8 px-4 xl:px-0">
+      <div className="px-4 py-8 xl:px-0">
         {/* <CallToAction /> */}
         <ContactSection />
       </div>

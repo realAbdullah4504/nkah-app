@@ -183,7 +183,7 @@ const Footer = () => {
               </Link>
             </div>
             <div className="ml-2 hidden text-sm text-gray-700 lg:inline">
-              &copy; {CURRENT_YEAR} NKAH NI NKWI NI MANKON
+              &copy; {CURRENT_YEAR} Civil Engineering of G.T.H.S Alabukam
             </div>
           </div>
         </div>

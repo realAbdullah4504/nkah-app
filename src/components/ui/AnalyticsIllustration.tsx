@@ -2,9 +2,9 @@ import Image from "next/image"
 
 export default function MissionPerformance() {
   return (
-    <div className="relative w-full overflow-hidden rounded-lg mt-12">
+    <div className="relative mt-12 w-full overflow-hidden rounded-lg">
       <Image
-        src="/group-2.jpg"
+        src="/mission.jpg"
         alt="Group photo of NKAH NI NKWI NI MANKON members"
         width={1200}
         height={800}

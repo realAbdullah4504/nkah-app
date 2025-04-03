@@ -3,7 +3,7 @@ import { FadeContainer, FadeDiv, FadeSpan } from "../Fade"
 
 export function ContactSection() {
   return (
-    <section aria-label="contact" id="contact ">
+    <section aria-label="contact" id="contact">
       <FadeContainer className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
         <FadeSpan className="block text-center text-sm font-medium tracking-wider text-gray-700 uppercase">
@@ -13,15 +13,16 @@ export function ContactSection() {
         {/* Main Title */}
         <h2 className="mt-4 text-center text-4xl font-semibold tracking-tighter text-gray-900 sm:text-6xl sm:leading-[4rem]">
           <FadeSpan>Get In Touch With</FadeSpan>{" "}
-          <FadeSpan>Nkah Ni Nkwi Ni Mankon</FadeSpan>
+          <FadeSpan>CENEXS Alumni Association</FadeSpan>
         </h2>
 
         {/* Description */}
         <FadeDiv className="mx-auto mt-6 max-w-2xl text-center">
           <p className="text-lg text-balance text-gray-700">
-            We are committed to empowering Mankon women and children globally.
-            Reach out to us to learn more about our programs, become a member,
-            or support our mission through donations and volunteer efforts.
+            Connect with us to learn more about our association, upcoming
+            events, membership opportunities, or to contribute to our community
+            initiatives. We welcome inquiries from all civil engineering alumni
+            and interested parties.
           </p>
         </FadeDiv>
 
@@ -35,10 +36,10 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-sm font-medium text-gray-700">
-                  Call Us Now
+                  Contact Numbers
                 </h3>
                 <p className="mt-1 text-xl font-semibold tracking-tight text-gray-900">
-                  +1 612-229-4290
+                  +237 xxx xxx xxx
                 </p>
               </div>
             </div>
@@ -48,9 +49,11 @@ export function ContactSection() {
                 <Mail className="size-6 text-red-600" />
               </div>
               <div>
-                <h3 className="text-sm font-medium text-gray-700">Email Us</h3>
+                <h3 className="text-sm font-medium text-gray-700">
+                  Official Email
+                </h3>
                 <p className="mt-1 text-xl font-semibold tracking-tight text-gray-900">
-                  info@nkahnikwi.org
+                  info@cenexs-alumni.org
                 </p>
               </div>
             </div>

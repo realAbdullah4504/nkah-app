@@ -18,7 +18,7 @@ import ChipViz from "./ChipViz"
 function NkahMark({ className }: { className?: string }) {
   return (
     <Image
-      src="/cropped.png"
+      src="/logo.png"
       alt="Nkah Ni Nkwi Ni Mankon Logo"
       width={100}
       height={100}
@@ -35,34 +35,33 @@ type GalleryItem = {
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    src: "/images/honouring-husbands/5501BAFF-5FF2-4F4A-940E-D5DF6EE68892.jpeg",
+    src: "/hero-image.jpg",
     category: "events",
-    title: "Nkah Minnesota honoring their husbands - 2019",
+    title: "Civil Engineering Ex-Students of G.T.H.S Alabukam",
   },
   {
     id: 2,
-    src: "/images/honouring-husbands/A1DE2CAF-ACF0-41BF-82D0-4C3DBDC721D1.jpeg",
+    src: "/honouring-husbands/hero-image.jpg",
     category: "events",
-    title: "Nkah Minnesota honoring their husbands - 2019",
+    title: "Civil Engineering Ex-Students of G.T.H.S Alabukam",
   },
   {
     id: 3,
-    src: "/images/volunteer/CCEDF235-81C6-4449-8DF8-F2F3A726212C.jpeg",
+    src: "/hero-image.jpg",
     category: "events",
-    title:
-      "Giving back to the community through volunteering. Nkah  members with their children and mothers volunteering at the Feed My Starving Children. -2018 👆🏾👆🏾👆🏾",
+    title: "Civil Engineering Ex-Students of G.T.H.S Alabukam",
   },
   {
     id: 4,
-    src: "/images/honouring-husbands/BB8FB5E3-4260-4AF9-AE01-2152A4938CDC.jpeg",
+    src: "/hero-image.jpg",
     category: "events",
-    title: "Nkah Minnesota honoring their husbands - 2019",
+    title: "Civil Engineering Ex-Students of G.T.H.S Alabukam",
   },
   {
     id: 5,
-    src: "/images/honouring-husbands/3FD1041C-7F52-4CBB-B120-68EA100FF2BD.jpeg",
+    src: "/hero-image.jpg",
     category: "events",
-    title: "Nkah Minnesota honoring their husbands - 2019",
+    title: "Civil Engineering Ex-Students of G.T.H.S Alabukam",
   },
 ]
 
@@ -203,17 +202,22 @@ export default function Features() {
         {/* 1) First Feature */}
         <div className="col-span-2 my-auto px-2">
           <h2 className="relative text-lg font-semibold tracking-tight text-red-600">
-            Empowering Communities
+            Intergrity-Progress-Innovation
             <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-red-600" />
           </h2>
           <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
-            A network of women fostering love, unity & self-reliance
+            F4, Family na one
           </p>
           <p className="mt-4 text-balance text-gray-700">
-            We connect dedicated members, volunteers, and partners across the
-            country and diaspora to uplift communities through scholarships,
-            training, donations, and advocacy—all from our robust network and
-            empowerment center on the hills of Ngomgham Mankon.
+            To become a vibrant community of civil engineering professionals,
+            fostering lifelong connections, advancing knowledge and promoting
+            excellence in the field, while making a positive impact on our alma
+            mater (reaching and providing a helping hand to academically
+            excelling students and under privilege, helping in the growth and
+            development of the school in any form possible), industry and
+            society. More so, creating platforms such as CENEXS got Talent to
+            enhance and showcase talent especially related to the civil
+            engineering field.
           </p>
         </div>
 
@@ -382,7 +386,7 @@ export default function Features() {
                 <div className="relative flex h-48 w-48 items-center justify-center">
                   <div className="rounded-full p-1 ring-1 ring-black/10">
                     <div className="relative z-10 flex size-20 items-center justify-center rounded-full bg-white ring-1 shadow-[inset_0px_-15px_20px_rgba(0,0,0,0.1),0_7px_10px_0_rgba(0,0,0,0.15)] ring-black/20">
-                      <NkahMark className="size-20" />
+                      <NkahMark className="size-20 rounded-2xl" />
                     </div>
                     <div className="absolute inset-12 animate-[spin_8s_linear_infinite] rounded-full bg-gradient-to-t from-transparent via-red-600 to-transparent blur-lg" />
                   </div>
@@ -395,16 +399,16 @@ export default function Features() {
         {/* 3) Third Feature */}
         <div className="col-span-2 my-auto px-2">
           <h2 className="relative text-lg font-semibold tracking-tight text-red-600">
-            Expanding Our Impact
+            Empower CENEXS.GTHS.ALA
             <div className="absolute top-1 -left-[7px] h-5 w-[3px] rounded-r-sm bg-red-600" />
           </h2>
-          <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
+          {/* <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
             Grow our reach with simple, collaborative efforts
-          </p>
+          </p> */}
           <p className="mt-4 text-balance text-gray-700">
-            We continuously develop new branches and initiatives to support
-            underprivileged families. With every program added, our global
-            network automatically collaborates—amplifying resources and impact.
+            Empower CENEXS.GTHS.ALA through networking, mentorship, and
+            continues learning, while promoting collaboration, innovation, and
+            community service
           </p>
         </div>
         <div className="relative col-span-2 flex items-center justify-center overflow-hidden">
